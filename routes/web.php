@@ -13,13 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-
 Route::get('/', function () {
     return view('welcome');
 })->middleware(['auth.shopify'])->name('home');
 
+Route::view('/welcome', 'welcome');
+Route::view('/products', 'products');
+Route::view('/customer', 'customer');
+Route::view('/settings', 'settings');

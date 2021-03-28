@@ -109,7 +109,7 @@ return [
     |
     */
 
-    'appbridge_enabled' => (bool) env('SHOPIFY_APPBRIDGE_ENABLED', true),
+    'appbridge_enabled' => (bool) env('SHOPIFY_APPBRIDGE_ENABLED', false),
 
     // Use semver range to link to a major or minor version number.
     // Leaving empty will use the latest verison - not recommended in production.
