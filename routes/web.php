@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* wishlist.test//?shop=l4-wishlist.myshopify.com */
+
 Route::get('/', function () {
     return view('welcome');
-})->middleware(['auth.shopify'])->name('home');
+})->middleware(['auth.shopify'])->name('welcome');
 
 Route::view('/welcome', 'welcome');
 Route::view('/products', 'products');
