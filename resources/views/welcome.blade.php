@@ -6,7 +6,7 @@
         <!-- This is an example component -->
         <div id="wrapper" class="container px-4 py-4 mx-auto">
 
-            @include('partials.modal')
+{{--            @include('partials.modal')--}}
 
             <div class="sm:grid sm:h-32 sm:grid-flow-row sm:gap-4 sm:grid-cols-3">
 
