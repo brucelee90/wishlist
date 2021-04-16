@@ -36,13 +36,8 @@
 
         function setupTheme() {
 
-            axios.post('configureTheme')
-                .then(function (response) {
-                    return true
-                })
-                .catch(function(error){
-                    alert(error)
-                })
+
+
 
         }
 

@@ -37,6 +37,12 @@ class SettingController extends Controller
 
         $shop->api()->rest('PUT', '/admin/api/2021-01/themes/'.$currentTheme.'/assets.json', $assetArray);
 
+        Setting::updateOrupdateOrInsert(
+            ['shop_id' => $shop->name],
+            ['activated' => '1']
+        );
+
+
         return 'Success';
     }
 
