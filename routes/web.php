@@ -39,6 +39,6 @@ Route::middleware(['auth.shopify'])->group(function () {
     Route::view('/customers', 'customers');
     Route::view('/settings', 'settings');
 
-    Route::post('configureTheme', "SettingController@configureTheme");
+    Route::get('/configureTheme', "App\Http\Controllers\SettingController@configureTheme");
 
 });

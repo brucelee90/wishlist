@@ -16,4 +16,5 @@ class Setting extends Model
         'shop_id',
         'activated',
     ];
+    use HasFactory;
 }
