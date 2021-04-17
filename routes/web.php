@@ -1,9 +1,8 @@
 <?php
 
-use App\Models\Setting;
-use App\Wishlist;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use \App\Models\Setting;
 
 
 /*
@@ -17,26 +16,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* wishlist.test//?shop=l4-wishlist.myshopify.com */
+
+
 
 
 Route::middleware(['auth.shopify'])->group(function () {
 
-
     Route::get('/', function () {
-        $shop = Auth::user();
 
-        $settings = Setting::where("shop_id", $shop->name)->first();
+        $shop = Auth::user();
+        $settings = Setting::where('shop_id', $shop->name)->first();
 
         return view('welcome', compact('settings'));
 
+    })->name('welcome');
 
-    })->name('home');
-
-
-    Route::get('wishlists', "WishlistController@index")->name('wishlists');
-
+    // Route::view('/welcome', 'welcome');
     Route::view('/products', 'products');
-    Route::view('/customers', 'customers');
+    Route::view('/customer', 'customer');
     Route::view('/settings', 'settings');
 
     Route::get('/configureTheme', "App\Http\Controllers\SettingController@configureTheme");

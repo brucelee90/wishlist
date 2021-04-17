@@ -6,7 +6,9 @@
         <!-- This is an example component -->
         <div id="wrapper" class="container px-4 py-4 mx-auto">
 
-            @include('partials.modal')
+            @if($settings->activated != 1)
+                @include('partials.modal')
+            @endif
 
             <div class="sm:grid sm:h-32 sm:grid-flow-row sm:gap-4 sm:grid-cols-3">
 
@@ -25,7 +27,6 @@
 
     <script type="text/javascript">
 
-
         var AppBridge = window['app-bridge'];
         var actions = AppBridge.actions;
         var TitleBar = actions.TitleBar;
@@ -35,13 +36,6 @@
             title: 'Dashboard',
         };
         var myTitleBar = TitleBar.create(app, titleBarOptions);
-
-        function setupTheme() {
-
-
-
-
-        }
 
     </script>
 @endsection

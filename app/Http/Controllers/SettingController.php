@@ -25,6 +25,7 @@ class SettingController extends Controller
         // $request = $shop->api()->graph('{ shop { name } }');
         $themes = $request['body']->container['themes'];
 
+
         $currentTheme = '';
         foreach ($themes as $theme){
             if ($theme['role'] == 'main'){
@@ -37,11 +38,11 @@ class SettingController extends Controller
 
         $shop->api()->rest('PUT', '/admin/api/2021-01/themes/'.$currentTheme.'/assets.json', $assetArray);
 
-        Setting::updateOrupdateOrInsert(
+
+        Setting::updateOrInsert(
             ['shop_id' => $shop->name],
             ['activated' => '1']
         );
-
 
         return 'Success';
     }
@@ -68,7 +69,7 @@ class SettingController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified re source.
      *
      * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
