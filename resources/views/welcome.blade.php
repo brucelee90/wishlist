@@ -6,7 +6,7 @@
         <!-- This is an example component -->
         <div id="wrapper" class="container px-4 py-4 mx-auto">
 
-{{--            @include('partials.modal')--}}
+            @include('partials.modal')
 
             <div class="sm:grid sm:h-32 sm:grid-flow-row sm:gap-4 sm:grid-cols-3">
 
@@ -24,6 +24,8 @@
     @parent
 
     <script type="text/javascript">
+
+
         var AppBridge = window['app-bridge'];
         var actions = AppBridge.actions;
         var TitleBar = actions.TitleBar;
@@ -36,10 +38,17 @@
 
         function setupTheme() {
 
-            setTimeout(function () {
-                alert('test')
-            }, 2000)
-
+            var opts = {
+                method: 'GET',
+                headers: {}
+            };
+            fetch('/configureTheme', opts)
+                .then(function (response) {
+                    console.log(response)
+            })
+                .catch(function (error) {
+                    console.log(error)
+                });
         }
 
     </script>

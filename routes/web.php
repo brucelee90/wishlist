@@ -29,26 +29,6 @@ Route::middleware(['auth.shopify'])->group(function () {
     Route::view('/customer', 'customer');
     Route::view('/settings', 'settings');
 
-    Route::get('/test', function (){
-        $shop = Auth::user();
-        $request = $shop->api()->rest('GET', '/admin/themes.json');
-        // $request = $shop->api()->graph('{ shop { name } }');
-        $themes = $request['body']->container['themes'];
-
-
-        $currentTheme = '';
-        foreach ($themes as $theme){
-            if ($theme['role'] == 'main'){
-                $currentTheme = $theme['id'];
-            }
-        }
-
-        $snippet = '<h1>TEST<h1/>';
-        $assetArray = array('asset'=> array('key' => 'snippets/l4-wishlist-app.liquid', 'value' => $snippet));
-
-        $shop->api()->rest('PUT', '/admin/api/2021-01/themes/'.$currentTheme.'/assets.json', $assetArray);
-
-       return 'Success';
-    });
+    Route::get('/configureTheme', "App\Http\Controllers\SettingController@configureTheme");
 
 });
