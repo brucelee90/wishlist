@@ -6,24 +6,26 @@ let activeClass = 'l4-active'
 window.axios = require('axios');
 const SHOP_DOMAIN = 'https://wishlist.test'
 
-const addToWishlist = (elem) => {
-
-    let {customer, product} = elem.dataset
-
+const postRequest = (elem, URI) => {
+    let {customer, product} = elem.dataset;
     axios.post(
-        SHOP_DOMAIN+'/api/addToWishlist',
+        SHOP_DOMAIN+'/api/'+URI,
         {shop_id: Shopify.shop, customer_id: customer, product_id: product},)
         .then(response => {console.log('response:',response)})
         .catch(error => {console.log(error, 'error')})
+}
 
-    // console.log('add',elem.dataset.product)
-    // elem.classList.add(activeClass)
-    // elem.innerText = 'Remove from Wishlist'
+const addToWishlist = (elem) => {
+    postRequest(elem, 'addToWishlist')
+
+    elem.classList.add(activeClass);
+    elem.innerText = 'Remove from Wishlist'
 }
 
 const removeFromWishlist = (elem) => {
-    console.log('remove',elem.dataset.product)
-    elem.classList.remove(activeClass)
+    postRequest(elem, 'removeFromWishlist')
+
+    elem.classList.remove(activeClass);
     elem.innerText = 'Add To Wishlist'
 
 }
@@ -35,5 +37,4 @@ wishlistBtn.addEventListener('click', function(){
     }else {
         removeFromWishlist(this)
     }
-
 })
