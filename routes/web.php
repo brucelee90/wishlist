@@ -40,3 +40,4 @@ Route::middleware(['auth.shopify'])->group(function () {
     Route::get('/configureTheme', "App\Http\Controllers\SettingController@configureTheme");
 
 });
+

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Wishlist extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'shop_id',
+        'customer_id',
+        'product_id'
+    ];
 }
