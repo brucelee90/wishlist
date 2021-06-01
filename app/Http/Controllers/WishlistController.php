@@ -48,9 +48,11 @@ class WishlistController extends Controller
      * @param  \App\Models\Wishlist  $wishlist
      * @return \Illuminate\Http\Response
      */
-    public function show(Wishlist $wishlist)
+    public function show(Request $request, Wishlist $wishlist)
     {
-        //
+        $item = Wishlist::where('shop_id', '=', $request['shop_id'])->where('customer_id', '=',$request['customer_id'])->where('product_id', '=', $request['product_id'])->first();
+        return $item;
+
     }
 
     /**
