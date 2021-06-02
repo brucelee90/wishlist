@@ -80,7 +80,6 @@ if(wishlistBtn){
                 wishlistBtn.innerText = elemInnerTextRemove
             }
         })
-
     }
 
 
