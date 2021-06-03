@@ -35,9 +35,15 @@ class WishlistController extends Controller
                 title
                 handle
                 createdAt
+                onlineStorePreviewUrl
+                featuredImage {
+      	            originalSrc
+      	        }
+      	        totalInventory
                 priceRange{
                     maxVariantPrice{
                         amount
+                        currencyCode
                     }
                 }
             }

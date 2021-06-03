@@ -1,7 +1,6 @@
 @extends('shopify-app::layouts.default')
 
 @section('content')
-Products
 
     <div x-data="{loading: true}"
          x-init="
@@ -16,6 +15,7 @@ Products
     ">
 
         <div x-ref="dropdown">
+            ... Loading
         </div>
 
     </div>
