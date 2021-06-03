@@ -3,6 +3,23 @@
 @section('content')
 Products
 
+    <div x-data="{loading: true}"
+         x-init="
+            axios.get('https://wishlist.test/wishlist')
+            .then(function(response){
+                $refs.dropdown.innerHTML = response.data
+                console.log(response.data)
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+    ">
+
+        <div x-ref="dropdown">
+        </div>
+
+    </div>
+
 @endsection
 
 @section('scripts')

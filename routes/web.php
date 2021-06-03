@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use \App\Models\Setting;
-use \App\Models\Wishlist;
+use \App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,40 +40,7 @@ Route::middleware(['auth.shopify'])->group(function () {
     Route::view('/customer', 'customer');
     Route::view('/settings', 'settings');
     Route::get('/configureTheme', "SettingController@configureTheme");
-
-    Route::get('/test', function () {
-
-        $shop = Auth::user();
-
-        $queryItemsArray = [];
-        $wishlistItems = Wishlist::where('shop_id', '=', 'l4-wishlist.myshopify.com')->get();
-
-        foreach ($wishlistItems as $item){
-            array_push($queryItemsArray, '"gid://shopify/Product/'.$item->product_id.'"');
-        }
-
-        $queryItemsArray = implode(",",$queryItemsArray);
-
-        $query = "
-        {
-          nodes(ids: [$queryItemsArray]) {
-            ...on Product {
-                id
-                title
-                handle
-                createdAt
-                priceRange{
-                    maxVariantPrice{
-                        amount
-                    }
-                }
-            }
-          }
-        }";
-
-        $result = $shop->api()->graph($query);
-        return $result;
-    });
+    Route::get('/wishlist', [WishlistController::class, 'index']);
 
 });
 
